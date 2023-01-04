@@ -1,26 +1,14 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:ecomerce_app/core/modules/cart/cart_view.dart';
 import 'package:ecomerce_app/core/modules/home/home_view.dart';
-import 'package:ecomerce_app/core/modules/home/widget/build_menu.dart';
-import 'package:ecomerce_app/core/modules/orders/order_view.dart';
-import 'package:ecomerce_app/core/modules/orders/view.dart';
 import 'package:ecomerce_app/core/modules/profile/profile_view.dart';
 import 'package:ecomerce_app/unplaced/floatingReportbtn.dart';
 import 'package:ecomerce_app/utils/replaced_range.dart';
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
-import '../../../addon/action_text_button.dart';
-import '../../router/go_router.dart';
-import '../auth/provider.dart';
 import '../cart/shopping_cart/view.dart';
 import '../offers/offers.dart';
-import 'Custom_AppBar/more_menu.dart';
-import 'Custom_AppBar/shopping_cart.dart';
 
 class DashBoard extends StatefulWidget {
   DashBoard({
@@ -65,6 +53,7 @@ class DashBoardState extends State<DashBoard> with TickerProviderStateMixin {
   List<Widget> _buildScreens() {
     return [
       HomeView(),
+      ProfileView(),
       OfferView(),
       ShoppingCartScreen(),
       ProfileView(),
@@ -92,12 +81,21 @@ class DashBoardState extends State<DashBoard> with TickerProviderStateMixin {
           ),
           NavigationDestination(
             selectedIcon: const Icon(
+              EvaIcons.personOutline,
+            ),
+            icon: const Icon(
+              EvaIcons.person,
+            ),
+            label: dashBoardTabs[1].toCapitalized(),
+          ),
+          NavigationDestination(
+            selectedIcon: const Icon(
               EvaIcons.percentOutline,
             ),
             icon: const Icon(
               EvaIcons.percent,
             ),
-            label: dashBoardTabs[1].toCapitalized(),
+            label: dashBoardTabs[2].toCapitalized(),
           ),
           NavigationDestination(
             selectedIcon: const Icon(
@@ -106,16 +104,16 @@ class DashBoardState extends State<DashBoard> with TickerProviderStateMixin {
             icon: const Icon(
               EvaIcons.shoppingCart,
             ),
-            label: dashBoardTabs[2].toCapitalized(),
+            label: dashBoardTabs[3].toCapitalized(),
           ),
           NavigationDestination(
             selectedIcon: const Icon(
-              EvaIcons.personOutline,
+              EvaIcons.menu,
             ),
             icon: const Icon(
-              EvaIcons.person,
+              EvaIcons.menu,
             ),
-            label: dashBoardTabs[3].toCapitalized(),
+            label: dashBoardTabs[4].toCapitalized(),
           ),
         ],
       ),
@@ -142,6 +140,7 @@ class DashBoardState extends State<DashBoard> with TickerProviderStateMixin {
 
 List<String> dashBoardTabs = [
   'home',
+  'profile',
   'offers',
   'cart',
   'profile',

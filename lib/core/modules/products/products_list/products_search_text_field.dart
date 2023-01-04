@@ -32,13 +32,16 @@ class _ProductsSearchTextFieldState
     return ValueListenableBuilder<TextEditingValue>(
       valueListenable: _controller,
       builder: (context, value, _) {
-        return TextField(
+        return TextFormField(
+          //textAlign: TextAlign.center,
           controller: _controller,
           autofocus: false,
           style: Theme.of(context).textTheme.headline6,
           decoration: InputDecoration(
+            contentPadding: EdgeInsets.all(0),
+            prefixIcon: Icon(Icons.search),
             hintText: 'Search products'.hardcoded,
-            icon: const Icon(Icons.search),
+            //icon: const Icon(Icons.search),
             suffixIcon: value.text.isNotEmpty
                 ? IconButton(
                     onPressed: () {
